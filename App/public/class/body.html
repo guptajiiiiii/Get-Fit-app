@@ -362,15 +362,10 @@
         console.log(k);
 
     for(var i=0;i<k.length;i++){
-      var outp = [k[i].name,
-    k[i].experience,
-    k[i].username,
-    k[i].location,
-    k[i].Feild];
-
-    var image=k[i].profileimage;
+        if(k[i].Feild=="Body-Building"){
+					var image=k[i].profileimage;
     // console.log(image);
-    var url1 = "http://localhost:8909/uploads/";
+    var url1 = "http://localhost:8909/uploads/"; 
     var url1 = url1 + `${image}`;
     console.log(url1);
     var li = document.createElement('div');
@@ -400,6 +395,10 @@
     `;
     var list = document.getElementById("b1");
     list.appendChild(li, list.childNodes[0]);
+
+
+				}
+    
   }
     });
 
