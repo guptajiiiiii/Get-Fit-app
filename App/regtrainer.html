@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Welcome</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Project </a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="/">Home</a></li>
+      <li><a href="/users/register">Register</a></li>
+      <li><a href="/users/login">Login</a></li>
+    </ul>
+    <ul class="nav navbar-nav" style="float:right">
+        <li><a href="/users/logout">Logout</a></li>
+    </ul>
+  </div>
+</nav>
+  <div class='top1'>
+    <h1>Registration form for Health Trainers</h1>
+    <h3>Please Register Here As a Trainer</h3>
+  </div>
+  <div class='register_form'>
+    <form method="POST"   action="http://localhost:8909/trainer" enctype="multipart/form-data" style="border:1px solid #ccc">
+      <fieldset>
+        <h3>Name</h3>
+      <input class="form-group" type="text" name="name" placeholder="Enter name" id="a">
+    </fieldset>
+    <fieldset>
+        <h3>Email</h3>
+      <input class="form-group" type="email" name="email" placeholder="Enter Email" id="b">
+    </fieldset>
+      <fieldset>
+        <h3>Username</h3>
+      <input class="form-group" type="text" name="username" placeholder="Enter Username" id="c">
+      </fieldset>
+      <fieldset>
+        <h3>Password</h3>
+      <input class="form-group" type="password" name="password" placeholder="Enter Password" id="d">
+      </fieldset>
+
+      <fieldset>
+        <h3>Experience</h3>
+       <input type="number" id="exp" name="experience" placeholder="In years" >
+      </fieldset>
+      <fieldset>
+        <h3>Location</h3>
+        <input class="form-group" type="text" name="location" placeholder="Your location" id="h">
+      </fieldset>
+      <fieldset>
+        <h3>Field / Domain</h3>
+        <select id="lllll" name="Feild">
+            <option value="Loose-Fat">Loose-Fat</option>
+            <option value="Sports & Athletics">Sports & Athletics</option>
+            <option value="Body-Building">BODY-Building</option>
+            <option value="Yoga & Meditation">Yoga & Meditation</option>
+            <option value="Physical recovery & Rehabilitation">Physical recovery & Rehabilitation</option>
+          </select>
+      </fieldset>
+      <fieldset>
+        <h3>Profile image</h3>
+      <input class="form-group" type="file" name="profileimage" id="f">
+      </fieldset>
+      <fieldset>
+      <button class="btn btn-primary" type="submit" name="submit" value="Register">Register</button>
+      </fieldset>
+    </form>
+  </div>
+  <!-- <script>
+    function varun(){
+      var name=document.getElementById("a").value;
+    var email=document.getElementById("b").value;
+    var password=document.getElementById("d").value;
+    var username=document.getElementById("c").value;
+    var profileimage=document.getElementById("f").value;
+    var experience=document.getElementById("exp").value;
+    var location=document.getElementById("h").value;
+    var Field=document.getElementById("lllll").value;
+    let xhr = new XMLHttpRequest();
+                      let json=JSON.stringify({
+                         name:`${name}` ,
+                         email:`${email}` ,
+                         password :`${password}`,
+                         username:`${username}`,
+                         profileimage:`${profileimage}`,
+                         experience:`${experience}`,
+                         location:`${location}`,
+                         Feild:`${Field}`
+
+                      });
+                      xhr.open("POST", 'http://localhost:8909/trainer' ,true);
+                      xhr.setRequestHeader('content-type','application/json; charset=utf-8');
+                      xhr.send(json);
+                        document.getElementById("a").value="";
+                       document.getElementById("b").value="";
+                      document.getElementById("c").value="";
+                      document.getElementById("d").value="";
+                      document.getElementById("f").value="";
+                      document.getElementById("exp").value="";
+                      document.getElementById("lllll").value="";
+                      document.getElementById("h").value="";
+
+
+  }
+
+  </script> -->
+
+</body>
+</html>
