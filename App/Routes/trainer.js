@@ -15,7 +15,7 @@ router.get('/',function(req,res){
         trainerModel.find()
     .exec()
     .then(orders=>{
-        res.json(orders).status(200);
+        res.json(orders).status(200); 
 
     })
 });
@@ -65,7 +65,11 @@ router.post('/',upload.single('profileimage'),function(req,res){
         if(err){
             res.json(err).status(400);
         }else{
-            res.json(newEntry).status(200);
+            //res.send(__dirname,+'../public'+'classification.html');
+             
+            
+            //  console.log(res.sendFile(path.join(__dirname+'/classification.html'))); 
+             res.sendFile('/home/piyush/Desktop/lelo/Get-Fit-app/App/public/classification.html'); 
         }
       })
 });

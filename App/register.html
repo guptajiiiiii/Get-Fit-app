@@ -230,8 +230,7 @@
       </li>
       <br>
     </ul>
-    <form method="POST" id="frml"  action="http://localhost:8909/user" enctype="multipart/form-data" style="border:1px solid #ccc">
-
+      <form method="POST" action="http://localhost:8909/user" id="frml"   enctype="multipart/form-data" style="border:1px solid #ccc">
       <fieldset>
         <h3>Name</h3>
       <input class="form-group" type="text" name="name" placeholder="Enter name" id="a">
@@ -254,15 +253,16 @@
       <input class="form-group" type="file" name="profileimage" id="f">
       </fieldset>
       <fieldset>
-      <button class="btn btn-primary" type="submit" name="submit" value="Register" onclick="piyush();">Register</button>
+      <button class="btn btn-primary" type="submit" name="submit" value="Register"  >Register</button>
       </fieldset>
-
+      <form>
   </div>
   </div>
 
 
-  <script>
-  function piyush(){
+  <!-- <script> 
+  function piyush(){ 
+     
     var name=document.getElementById("a").value;
     var email=document.getElementById("b").value;
     var password=document.getElementById("d").value;
@@ -283,9 +283,11 @@
                        document.getElementById("b").value="";
                       document.getElementById("c").value="";
                       document.getElementById("d").value="";
-                      document.getElementById("f").value="";
+                      document.getElementById("f").value=""; 
+                      // window.open("./public/classification.html","_self") ;
+                    
   }
-  </script>
+  </script> -->
 
 </body>
 </html>

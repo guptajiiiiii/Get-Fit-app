@@ -1,7 +1,10 @@
 const express =require('express');
 const router =express.Router();
 const mongoose =require('mongoose');
-const userModel = require('../Models/userModel.js'); 
+const multer = require('multer');
+const userModel = require('../Models/userModel.js');  
+
+var upload = multer({dest: './public/uploads'});
 
 
 // router.get('/',function(req,res){
@@ -12,7 +15,8 @@ router.get('/',function(req,res){
         userModel.find() 
     .exec()
     .then(orders=>{ 
-        res.json(orders).status(200); 
+         res.json(orders).status(200); 
+       
         
     })
 });
@@ -38,20 +42,28 @@ router.delete("/:productID",function(req,res){
 //     });
 // });
 
-router.post('/',function(req,res){ 
+router.post('/',upload.single('profileimage'),function(req,res){  
+       
+    if(req.file){
+        console.log('Uploading File....');
+        var profileimage = req.file.filename;
+    } else{
+        console.log('No File Uploaded....');
+        var profileimage = 'noimage.jpg';
+    } 
     const newUser =new userModel({ 
         _id: new mongoose.Types.ObjectId(),
         name:req.body.name,
         email:req.body.email,
         password:req.body.password,
         username:req.body.username,
-        profileimage:req.body.profileimage
+        profileimage:profileimage
     });
     newUser.save(function(err,newEntry){ 
         if(err){
-            res.json(err).status(400);
+            res.json(err).status(400); 
         }else{
-            res.json(newEntry).status(200); 
+            res.sendFile('/home/piyush/Desktop/lelo/Get-Fit-app/App/public/classification.html'); 
         }
       })
 });
