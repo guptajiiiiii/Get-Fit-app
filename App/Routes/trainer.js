@@ -15,7 +15,7 @@ router.get('/',function(req,res){
         trainerModel.find()
     .exec()
     .then(orders=>{
-        res.json(orders).status(200); 
+        res.json(orders).status(200);
 
     })
 });
@@ -63,13 +63,13 @@ router.post('/',upload.single('profileimage'),function(req,res){
     });
     newTrainer.save(function(err,newEntry){
         if(err){
-            res.json(err).status(400);
+             res.sendFile('/home/sumant/Desktop/summer/get/Get-Fit-app/App/public/jjj.html'); 
         }else{
             //res.send(__dirname,+'../public'+'classification.html');
-             
-            
-            //  console.log(res.sendFile(path.join(__dirname+'/classification.html'))); 
-             res.sendFile('/home/piyush/Desktop/lelo/Get-Fit-app/App/public/classification.html'); 
+
+
+            //  console.log(res.sendFile(path.join(__dirname+'/classification.html')));
+             res.sendFile('/home/sumant/Desktop/summer/get/Get-Fit-app/App/public/classification.html');
         }
       })
 });

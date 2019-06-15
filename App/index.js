@@ -84,9 +84,25 @@ app.use(express.static(__dirname + '/public'));
 //   });
 // }
 
-// app.get('/',function(req,res){
-//    res.send("I'm not a editor.").status(200);
-// });
+app.get('/regtrainer.html',function(req,res){
+   res.sendFile('/home/sumant/Desktop/summer/get/Get-Fit-app/App/regtrainer.html');
+});
+app.get('/register.html',function(req,res){
+   res.sendFile('/home/sumant/Desktop/summer/get/Get-Fit-app/App/register.html');
+});
+
+app.get('/login.html',function(req,res){
+   res.sendFile('/home/sumant/Desktop/summer/get/Get-Fit-app/App/login.html');
+});
+app.get('/logtrainer.html',function(req,res){
+   res.sendFile('/home/sumant/Desktop/summer/get/Get-Fit-app/App/logtrainer.html');
+});
+app.get('/public/classification.html',function(req,res){
+   res.sendFile('/home/sumant/Desktop/summer/get/Get-Fit-app/App/public/classification.html');
+});
+app.get('/log',function(req,res){
+   res.sendFile('/home/sumant/Desktop/summer/get/Get-Fit-app/App/public/classification.html');
+});
 
 
 

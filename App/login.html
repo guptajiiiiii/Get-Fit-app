@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script> 
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 </head>
 <body>
 
@@ -30,37 +30,37 @@
     <h3>Please Login below</h3>
   </div>
   <div class='register_form'>
-    
+
       <fieldset>
-          <p  id="gg"></p> 
+          <p  id="gg"></p>
         <h3>Username</h3>
       <input class="form-group" type="text" name="username" id="email" placeholder="Enter Username">
-      </fieldset> 
-      
+      </fieldset>
+
       <fieldset>
         <h3>Password</h3>
       <input class="form-group" type="password" name="password" id="password" placeholder="Enter Password">
       </fieldset>
       <fieldset>
-      <button class="btn btn-primary" type="submit" name="submit" value="Login" onclick="gupta();">Login</button> 
+      <button class="btn btn-primary" type="submit" name="submit" value="Login" onclick="gupta();">Login</button>
       </fieldset>
     </form>
   </div>
 
 </body>
-<script > 
+<script >
 function gupta(){
   var username=document.getElementById("email").value;
   var password=document.getElementById("password").value;
-  var count=0;  
+  var count=0;
   const xhr1= new XMLHttpRequest();
- 
+
                      xhr1.onreadystatechange=function(){
                          if(xhr1.readyState ==4 && xhr1.status==200){
                             var data = JSON.parse(xhr1.responseText);
                                console.log(data);
                             for(let i=0;i<(data.length);i++){
-                               
+
                               if(data[i].username==username && data[i].password==password){
                                 // console.log("hii");
                                   count=count+1;
@@ -68,22 +68,22 @@ function gupta(){
                             }
                             if(count==0){
                                 document.getElementById("gg").innerHTML="user name or password is not correct";
-                            }else{ 
-                              // window.open("./public/classification.html","_self");
+                            }else{
+                               window.open("/log","_self");
                               count = 0;
                             }
                           }
                         }
 
-                    
+
                         xhr1.open("GET","http://localhost:8909/user" , true);
                     xhr1.setRequestHeader('content-type','application/json; charset=utf-8');
-                    xhr1.send();  
-  
+                    xhr1.send();
+
                     document.getElementById("email").value="";
                     document.getElementById("password").value="";
 
 }
-  
+
 </script>
 </html>

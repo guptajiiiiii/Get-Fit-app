@@ -2,7 +2,7 @@ const express =require('express');
 const router =express.Router();
 const mongoose =require('mongoose');
 const multer = require('multer');
-const userModel = require('../Models/userModel.js');  
+const userModel = require('../Models/userModel.js');
 
 var upload = multer({dest: './public/uploads'});
 
@@ -12,12 +12,12 @@ var upload = multer({dest: './public/uploads'});
 // });
 
 router.get('/',function(req,res){
-        userModel.find() 
+        userModel.find()
     .exec()
-    .then(orders=>{ 
-         res.json(orders).status(200); 
-       
-        
+    .then(orders=>{
+         res.json(orders).status(200);
+
+
     })
 });
 
@@ -28,11 +28,11 @@ router.delete("/:productID",function(req,res){
     .then(data=>{
         res.json(data).status(200);
     })
-});  
+});
 // router.put('/:productId',function(req,res){
 //     const id=req.params.productID;
-//     const newage=req.body.age; 
-//     MessageModel.updateOne({_id:id},{$set:{age:newage}}) 
+//     const newage=req.body.age;
+//     MessageModel.updateOne({_id:id},{$set:{age:newage}})
 //     .exec()
 //     .then(data=>{
 //         res.json(data).status(200);
@@ -42,16 +42,16 @@ router.delete("/:productID",function(req,res){
 //     });
 // });
 
-router.post('/',upload.single('profileimage'),function(req,res){  
-       
+router.post('/',upload.single('profileimage'),function(req,res){
+
     if(req.file){
         console.log('Uploading File....');
         var profileimage = req.file.filename;
     } else{
         console.log('No File Uploaded....');
         var profileimage = 'noimage.jpg';
-    } 
-    const newUser =new userModel({ 
+    }
+    const newUser =new userModel({
         _id: new mongoose.Types.ObjectId(),
         name:req.body.name,
         email:req.body.email,
@@ -59,11 +59,11 @@ router.post('/',upload.single('profileimage'),function(req,res){
         username:req.body.username,
         profileimage:profileimage
     });
-    newUser.save(function(err,newEntry){ 
+    newUser.save(function(err,newEntry){
         if(err){
-            res.json(err).status(400); 
+            res.sendFile('/home/sumant/Desktop/summer/get/Get-Fit-app/App/public/jjj.html'); 
         }else{
-            res.sendFile('/home/piyush/Desktop/lelo/Get-Fit-app/App/public/classification.html'); 
+            res.sendFile('/home/sumant/Desktop/summer/get/Get-Fit-app/App/public/classification.html');
         }
       })
 });

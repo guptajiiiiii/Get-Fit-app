@@ -7,9 +7,9 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script> 
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
-    
+
 <style>
 
 
@@ -363,14 +363,14 @@
         if(k[i].Feild=="Physical recovery & Rehabilitation"){
           var image=k[i].profileimage;
     // console.log(image);
-    var url1 = "http://localhost:8909/uploads/"; 
+    var url1 = "http://localhost:8909/uploads/";
     var url1 = url1 + `${image}`;
     console.log(url1);
     var li = document.createElement('div');
     li.className = 'column';
     li.innerHTML = `
 
-    <div class="col-xs-12 col-sm-6 col-md-4">
+    <div class="col-xs-12 col-sm-6 col-md-4" style="float:left">
 
       <a class="blog-item second" href="#" title="Suspendisse potenti">
         <div class="blog-item-img" style="background-image: url(`+url1+`);"></div>
@@ -395,7 +395,7 @@
     list.appendChild(li, list.childNodes[0]);
         }
 
-    
+
   }
     });
 

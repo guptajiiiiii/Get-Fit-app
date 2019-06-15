@@ -345,10 +345,24 @@
 
 </br>
 
-
+<br>
+<br>
 
 <div id="blog-section">
+
       <div class="container" id="b1">
+        <div class="row">
+          <div class="col-xs-12 col-sm-6 col-md-4">
+
+            <div class="blog-section-intro">
+
+              <h2>Body-Building</h2>
+              <p>Tips from our top trainers</p>
+            </div>
+
+
+        </div>
+        </div>
 
 
 
@@ -365,7 +379,7 @@
         if(k[i].Feild=="Body-Building"){
 					var image=k[i].profileimage;
     // console.log(image);
-    var url1 = "http://localhost:8909/uploads/"; 
+    var url1 = "http://localhost:8909/uploads/";
     var url1 = url1 + `${image}`;
     console.log(url1);
     var li = document.createElement('div');
@@ -378,15 +392,15 @@
         <div class="blog-item-img" style="background-image: url(`+url1+`);"></div>
         <div class="blog-item-content">
           <span class="blog-item-label">`+k[i].name+`</span>
-          <span class="blog-item-date">
+          <span class="blog-item-date" style="float:left">
             <span class="blog-item-date-day">Location:</span>
             <span class="blog-item-date-month">`+k[i].location+`</span>
-            <button type="submit" style="margin-left:200px;">Message </button>
+              <button type="submit"style="margin-left:200px;" >Message </button>
           </span>
           </br>
           </br>
           </br>
-          <h3>`+k[i].Feild+`</h3>
+
           <p>Experience in this field :`+k[i].experience+`</p>
         </div>
       </a>
@@ -398,7 +412,7 @@
 
 
 				}
-    
+
   }
     });
 
