@@ -382,20 +382,24 @@
     var url1 = "http://localhost:8909/uploads/";
     var url1 = url1 + `${image}`;
     console.log(url1);
+    var abc = k[i].username;
     var li = document.createElement('div');
     li.className = 'column';
     li.innerHTML = `
 
-    <div class="col-xs-12 col-sm-6 col-md-4" style="float:left">
+    <div class="col-xs-12 col-sm-6 col-md-4" style="float:left;margin-bottom:100px">
 
-      <a class="blog-item second" href="#" title="Suspendisse potenti">
+      <a class="blog-item second" href="./result.html?`+abc+`" title="Suspendisse potenti">
+
+
         <div class="blog-item-img" style="background-image: url(`+url1+`);"></div>
         <div class="blog-item-content">
           <span class="blog-item-label">`+k[i].name+`</span>
           <span class="blog-item-date" style="float:left">
             <span class="blog-item-date-day">Location:</span>
             <span class="blog-item-date-month">`+k[i].location+`</span>
-              <button type="submit"style="margin-left:200px;" >Message </button>
+              <button type="submit" style="float:right;" >Message </button>
+
           </span>
           </br>
           </br>
@@ -403,6 +407,7 @@
 
           <p>Experience in this field :`+k[i].experience+`</p>
         </div>
+
       </a>
 
     </div>
@@ -415,6 +420,7 @@
 
   }
     });
+
 
     xhr.open('GET','http://localhost:8909/trainer',true);
     xhr.send();
