@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Payment Portal</title> 
+</head>
+<body>
+	<form action="/charge" method="POST">
+		<script
+			src="https://checkout.stripe.com/checkout.js"
+			class="stripe-button"
+			data-key="pk_test_s55MGRqwiZlsCZHJjLOz3S9J004HpQk6IY"
+			data-amount="20000"
+			data-name="Trainer Premium"
+			data-description="Premium fee to stay fit"
+			data-image="http://www.getfit-fitness.it/images/logos/getfit_mainlogo.png"
+			data-locale="auto">
+		</script> 
+		<script>
+			document.getElementsByClassName('stripe-button-el')[0]
+			.style.display = 'none';
+		</script>
+		<button type="submit" class="btn btn-outline-dark text-white btn-lg" style="cursor: pointer;">Pay $200 For Premium</button>
+	</form>
+
+</body>
+</html>

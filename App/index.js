@@ -9,6 +9,8 @@ const _ = require('lodash');
 const path = require('path');
 var http = require('http');
 var fs = require('fs');
+
+const stripe = require('stripe')('sk_test_7JdkLmRfrnyE4D0aQSfW1YI100JWLbWKNr');
 //let count =0;
 const app=express();
 const port=8909;
@@ -23,6 +25,8 @@ mongoose.connect("mongodb+srv://guptajiiiiii:Piyushgupta@cluster0-m9g4a.mongodb.
 });
 const user=require('./Routes/user');
 const trainer=require('./Routes/trainer');
+const details=require('./Routes/details');
+
 
 
 // products=require('./routes/products');
@@ -41,6 +45,7 @@ var cons = require('consolidate');
 // view engine setup
 app.engine('html', cons.swig)
 app.set('./', path.join(__dirname, './'));
+app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'html');
 app.set('view engine', pug);
 
@@ -48,6 +53,7 @@ app.set('view engine', pug);
 
 app.use('/user',user);
 app.use('/trainer',trainer) ;
+app.use('/details',details);
 // app.use('/products',products);
 // app.use('/orders',orders);
 
@@ -84,6 +90,47 @@ app.use(express.static(__dirname + '/public'));
 //   });
 // }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+app.get('/paykar', function(req,res){
+	res.sendFile('/home/sumant/Desktop/summer/get/Get-Fit-app/App/views/index.html');
+});
+
+
+
+app.get('/success', (req,res) => {
+	res.render('success');
+});
+
+
+app.post('/charge',(req, res) => {
+	const amount = 20000;
+    console.log("hii");
+	stripe.customers.create({
+		email: req.body.stripeEmail,
+		source: req.body.stripeToken
+	})
+	.then(customer => stripe.charges.create({
+		amount,
+		description: 'Premium fee to stay fit',
+		currency: 'USD',
+		customer:customer.id
+	}))
+	.then(charge => res.sendfile('/home/sumant/Desktop/summer/get/Get-Fit-app/App/views/success.html'));
+});
+
+
 app.get('/regtrainer.html',function(req,res){
    res.sendFile('/home/sumant/Desktop/summer/get/Get-Fit-app/App/regtrainer.html');
 });
@@ -103,6 +150,14 @@ app.get('/public/classification.html',function(req,res){
 app.get('/log',function(req,res){
    res.sendFile('/home/sumant/Desktop/summer/get/Get-Fit-app/App/public/classification.html');
 });
+
+app.get('/det',function(req,res){
+   res.sendFile('/home/sumant/Desktop/summer/get/Get-Fit-app/App/detail.html');
+});
+app.get('/details',function(req,res){
+   res.sendFile('/home/sumant/Desktop/summer/get/Get-Fit-app/App/public/result.html');
+});
+
 
 
 
