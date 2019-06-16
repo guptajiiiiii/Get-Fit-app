@@ -10,6 +10,8 @@ const path = require('path');
 var http = require('http');
 var fs = require('fs');
 
+
+
 const stripe = require('stripe')('sk_test_7JdkLmRfrnyE4D0aQSfW1YI100JWLbWKNr');
 //let count =0;
 const app=express();
@@ -48,6 +50,7 @@ app.set('./', path.join(__dirname, './'));
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'html');
 app.set('view engine', pug);
+app.set('view engine','ejs');
 
 
 
@@ -92,12 +95,16 @@ app.use(express.static(__dirname + '/public'));
 
 
 
+var server = app.listen(port,function(){
+      console.log(`server is listening on ${port}`);
+});
 
 
+var socket=require('socket.io');
+var io =socket(server);
 
 
-
-
+const rooms=[];
 
 
 
@@ -107,11 +114,35 @@ app.get('/paykar', function(req,res){
 	res.sendFile('/home/sumant/Desktop/summer/get/Get-Fit-app/App/views/index.html');
 });
 
+app.get('/chatiboy', function(req,res){
+  console.log("hii");
+  //res.sendFile('/home/piyush/Desktop/apna alag se/App/views/index.ejs');
+	 res.render('index',{ rooms:rooms})
+});
+
 
 
 app.get('/success', (req,res) => {
 	res.render('success');
 });
+
+app.post('/room', (req, res) => {
+  if (rooms[req.body.room] != null) {
+    return res.redirect('/chatiboy');
+  }
+  rooms[req.body.room] = { users: {} }
+  res.redirect(req.body.room)
+  // Send message that new room was created
+  io.emit('room-created', req.body.room)
+})
+
+app.get('/room', function(req,res) {
+  if (rooms[req.params.room] == null) {
+    return res.redirect('/chatiboy');
+  }
+  console.log("pppppppp");
+  res.render('room', { roomName: req.params.room })
+})
 
 
 app.post('/charge',(req, res) => {
@@ -129,6 +160,34 @@ app.post('/charge',(req, res) => {
 	}))
 	.then(charge => res.sendfile('/home/sumant/Desktop/summer/get/Get-Fit-app/App/views/success.html'));
 });
+
+
+io.on('connection', socket => {
+  console.log("User connected")
+  socket.on('new-user', (room, name) => {
+
+    socket.join(room)
+    rooms[room].users[socket.id] = name
+    socket.to(room).broadcast.emit('user-connected', name)
+  })
+  socket.on('send-chat-message', (room, message) => {
+    console.log("s-c-m BACK",room,message)
+    io.to(room).emit('chat-message', { message: message, name: rooms[room].users[socket.id] })
+  })
+  socket.on('disconnect', () => {
+    getUserRooms(socket).forEach(room => {
+      socket.broadcast.to(room).emit('user-disconnected', rooms[room].users[socket.id])
+      delete rooms[room].users[socket.id]
+    })
+  })
+})
+
+function getUserRooms(socket) {
+  return Object.entries(rooms).reduce((names, [name, room]) => {
+    if (room.users[socket.id] != null) names.push(name)
+    return names
+  }, [])
+}
 
 
 app.get('/regtrainer.html',function(req,res){
@@ -167,9 +226,7 @@ app.get('/details',function(req,res){
 //app.get('/count',function(req,res){
   //  res.send(count.toString()).status(200);
 //});
-app.listen(port,function(){
-      console.log(`server is listening on ${port}`);
-});
+
 //app.get('/404',function(req,res){
  //   count=count-2;
 //});

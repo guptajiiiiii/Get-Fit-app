@@ -5,9 +5,221 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <style>
+  @import url(https://fonts.googleapis.com/css?family=Roboto:400,300,600,400italic);
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-font-smoothing: antialiased;
+    -o-font-smoothing: antialiased;
+    font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    font-family: "Roboto", Helvetica, Arial, sans-serif;
+    font-weight: 100;
+    font-size: 12px;
+    line-height: 30px;
+    color: #777;
+    background-image: url(https://images.pexels.com/photos/2204196/pexels-photo-2204196.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940);
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-size: cover;
+    -webkit-background-size: cover;
+
+  }
+
+  .container {
+    max-width: 600px;
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  #frml input[type="text"],
+  #frml textarea,
+  #frml button[type="submit"] {
+    font: 400 12px/16px "Roboto", Helvetica, Arial, sans-serif;
+  }
+
+  #frml {
+    background: #F9F9F9;
+    padding: 25px;
+    margin: 150px 0;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+  }
+
+  #frml h3 {
+    display: block;
+    font-size: 25px;
+    font-weight: 300;
+    margin-bottom: 10px;
+  }
+
+  #frml h4 {
+    margin: 5px 0 15px;
+    display: block;
+    font-size: 13px;
+    font-weight: 400;
+  }
+
+  fieldset {
+    border: medium none !important;
+    margin: 0 0 10px;
+    min-width: 100%;
+    padding: 0;
+    width: 100%;
+  }
+
+  #frml input[type="text"],
+  #frml input[type="email"],
+  #frml input[type="tel"],
+  #frml input[type="url"],
+  #frml textarea {
+    width: 100%;
+    border: 1px solid #ccc;
+    background: #FFF;
+    margin: 0 0 5px;
+    padding: 10px;
+  }
+
+  #frml input[type="text"]:hover,
+  /*#frml input[type="email"]:hover,
+  #frml input[type="tel"]:hover,
+  #frml input[type="url"]:hover,*/
+  #frml textarea:hover {
+    -webkit-transition: border-color 0.3s ease-in-out;
+    -moz-transition: border-color 0.3s ease-in-out;
+    transition: border-color 0.3s ease-in-out;
+    border: 1px solid #aaa;
+  }
+
+  #frml textarea {
+    height: 100px;
+    max-width: 100%;
+    resize: none;
+    box-shadow: 2px 2px 2px #708090 ;
+  }
+
+  #frml button[type="submit"] {
+    cursor: pointer;
+    width: 100%;
+    border: none;
+    background: #696969;
+    color: #FFF;
+    margin: 0 0 5px;
+    padding: 10px;
+    font-size: 15px;
+    border-radius: 20px;
+    box-shadow: 10px 10px 10px #000000;
+  }
+
+  #frml button[type="submit"]:hover {
+    background: #43A047;
+    -webkit-transition: background 0.3s ease-in-out;
+    -moz-transition: background 0.3s ease-in-out;
+    transition: background-color 0.3s ease-in-out;
+    box-shadow: 10px 10px 10px #000000;
+  }
+
+  #frml choice[type="submit"] {
+    cursor: pointer;
+    width: 100%;
+    border: none;
+    background: #708090;
+    color: #FFF;
+    margin: 0 0 5px;
+    padding: 10px;
+    font-size: 15px;
+    border-radius: 20px;
+    box-shadow: 10px 10px 10px black;
+  }
+
+  #frml choice[type="submit"]:hover {
+    background: #43A047;
+    -webkit-transition: background 0.3s ease-in-out;
+    -moz-transition: background 0.3s ease-in-out;
+    transition: background-color 0.3s ease-in-out;
+    box-shadow: 0px 0px 0px;
+  }
+
+
+  #frml button[type="submit"]:active {
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5);
+  }
+
+  .copyright {
+    text-align: center;
+  }
+
+  #frml input:focus,
+  #frml textarea:focus {
+    outline: 0;
+    border: 1px solid #aaa;
+  }
+
+  ::-webkit-input-placeholder {
+    color: #888;
+  }
+
+  :-moz-placeholder {
+    color: #888;
+  }
+
+  ::-moz-placeholder {
+    color: #888;
+  }
+
+  :-ms-input-placeholder {
+    color: #888;
+  }
+
+  </style>
+
+
+
+
+
+   <title>Trainer Register</title>
+
+
 </head>
 <body>
-    <form method="POST" action="http://localhost:8909/details" style="border:1px solid #ccc">
+
+  <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top" style="font-size:20px">
+  <a class="navbar-brand" href="./public/index.html" style="font-size:30px">Get Fit</a>
+  <ul class="navbar-nav">
+    <li class="nav-item">
+      <a class="nav-link" href="./register.html">Register</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="./login.html">Log in</a>
+    </li>
+  </ul>
+  <ul style="padding-left:1500px">
+      <li><a href="http://localhost:8909/">Logout</a></li>
+  </ul>
+
+</nav>
+</br>
+</br></br>
+  <div class='container'>
+    <h1 style="color: white"> Schedule Post</h1>
+    <h3 style="color: #F5DEB3">Start Helping our Users</h3>
+
+  <div class='register_form'>
+
+
+    <form method="POST" action="http://localhost:8909/details" id="frml" style="border:1px solid #ccc">
 
         <fieldset>
           <h3>username</h3>
@@ -27,7 +239,7 @@
           <input class="form-group" type="text" name="schedule" id="f">
           </fieldset>
         <fieldset>
-    
+
         <button class="btn btn-primary" type="submit" name="submit" value="Register" onclick=window.open("http://localhost:8909/","_self")  >upload-data</button>
 
         </fieldset>

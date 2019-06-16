@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Chat App</title>
+  <script>
+    const roomName = "<%= roomName %>"
+  </script>
+  <script defer src="/socket.io/socket.io.js"></script>
+  <script defer src="script.js"></script>
+  <style>
+    body {
+      padding: 0;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      background-color: #39290D;
+      background-image: url("https://images.pexels.com/photos/1229356/pexels-photo-1229356.jpeg?h=1000&w=1500&fit=crop&mark=https%3A%2F%2Fassets.imgix.net%2F~text%3Ftxtclr%3Dfff%26txt%3DFree+Fitness+Photos%26txtsize%3D120%26txtpad%3D20%26bg%3D80000000%26txtfont%3DAvenir-Heavy%26txtalign%3Dcenter%26w%3D1300&markalign=center%2Cmiddle&txt=pexels.com&txtalign=center&txtsize=60&txtclr=eeffffff&txtfont=Avenir-Heavy&txtshad=10");
+      
+    }
+
+    #message-container {
+      width: 80%;
+      max-width: 1200px;
+    }
+
+    #message-container div {
+      background-color: #2775E9;
+      padding: 10px;
+    }
+
+    #message-container div:nth-child(2n) {
+      background-color: #50BA23;
+    }
+
+    #send-container {
+      position: fixed;
+      height : 25px;
+      bottom: 25px;
+      background-color: white;
+      max-width: 1200px;
+      width: 80%;
+      display: flex;
+
+    }
+
+    #message-input {
+      flex-grow: 1;
+      background-color: white;
+    }
+    
+  </style>
+</head>
+<body>
+  <div id="message-container"></div>
+  <form id="send-container">
+    <input type="text" id="message-input">
+    <button type="submit" id="send-button" style="background-color: #6E661F" >Send</button>
+  </form>
+</body>
+</html>
